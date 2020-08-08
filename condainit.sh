@@ -1,7 +1,7 @@
 #!/bin/bash
 
 dev_packages="flake8 rope autopep8"
-packages="matplotlib numpy pandas scipy scikit-learn joblib"
+packages="matplotlib numpy pandas scipy scikit-learn seaborn tensorflow joblib"
 flake8_ignore="E402, E266, E265"
 
 while getopts 'p:d:' opt
@@ -16,7 +16,7 @@ done
 
 
 echo -e "\nSetting up conda environment"
-conda install --three
+conda install $0 
 
 echo -e "\nInstalling ipython kernel"
 conda install --dev ipykernel
