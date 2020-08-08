@@ -1,0 +1,4 @@
+~/.config/nvim/init.vim
+\ll
+\lh
+
