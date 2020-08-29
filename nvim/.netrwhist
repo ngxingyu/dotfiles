@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/home/ngxingyu/.config/polybar'
+let g:netrw_dirhist_4='/home/ngxingyu'
+let g:netrw_dirhist_3='/home/ngxingyu/Code/Alpha'
+let g:netrw_dirhist_2='/home/ngxingyu/Code'
+let g:netrw_dirhist_1='/home/ngxingyu'

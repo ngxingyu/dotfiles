@@ -1,0 +1,15 @@
+*~
+.DS_Store
+tags
+.tags
+node_modules/
+.tern-port
+*.class
+*.jar
+npm-debug.log
+_site/
+.sass-cache/
+.bundle/
+.env
+.venv
+.lvimrc

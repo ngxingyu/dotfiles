@@ -1,0 +1,27 @@
+[user]
+    ---email = ng.xingyu@dhs.sg
+    ---name = Xing Yu, Ng
+
+[alias]
+    st = status
+    ci = commit -v
+    co = checkout
+    di = diff
+    amend = commit --amend
+    aa = add --all
+    fa = fetch --all
+    b = branch
+
+[push]
+	default = simple
+[help]
+	autocorrect = 1
+[core]
+	excludesfile = ~/.gitignore_global
+	editor = nvim -u $HOME/.config/nvim/git-init.vim
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[pull]
+	rebase = true
+[color]
+	ui = true
