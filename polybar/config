@@ -461,11 +461,11 @@ label = %title:0:30:...%
 [module/agenda]
 type = custom/script
 ; Show the next event and forget cache automatically every 60 minutes
-exec = i3-agenda -c ~/.credentials.json -ttl 60
+exec = i3-agenda -c ~/.credentials.json -ttl 30
 ; left click to launch Google Calendar
 click-left = chromium https://calendar.google.com/calendar/r/day
 ; right click force update the cache, if for example you just added a new event
 click-right = notify-send "syncing..." && i3-agenda -c ~/.credentials.json --update && notify-send -t 2000 "sync finished"
-interval = 60
+interval = 30
 
 ; vim:ft=dosini
