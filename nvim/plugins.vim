@@ -12,7 +12,7 @@ Plug 'itchyny/lightline.vim' "lightline
 Plug 'mengelbrecht/lightline-bufferline' "bufferno
 Plug 'edkolev/tmuxline.vim'
 "Plug 'christoomey/vim-tmux-navigator' "Use Custom Keybinding.
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
 Plug 'mhinz/vim-startify'
 Plug 'TaDaa/vimade' "fade inactive buffers
 Plug 'mbbill/undotree' "undo history

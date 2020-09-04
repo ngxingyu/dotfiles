@@ -1,6 +1,3 @@
-" File              : init.vim
-" Date              : 28.08.2020
-" Last Modified Date: 28.08.2020
 if &compatible
   set nocompatible               " Be iMproved
 endif
@@ -80,8 +77,11 @@ let g:vimtex_compiler_progname = 'nvr'
 let g:tex_superscripts= "[0-9a-zA-W.,:;+-<>/()=]"
 let g:tex_subscripts= "[0-9aehijklmnoprstuvx,+-/().]"
 
-"let g:tex_conceal="abdgm"
+set conceallevel=2
+hi Conceal guibg=Black guifg=White
+let g:tex_conceal="abdgms"
 au FileType tex syn region texMathZoneZ matchgroup=texStatement start="\\eqn{"  start="\\eqns{" start="\\eqna{" start="\\eqnas{"    matchgroup=texStatement end="}" end="%stopzone\>"   contains=@texMathZoneGroup
+
 
 
 let g:nnn#set_default_mappings = 0
