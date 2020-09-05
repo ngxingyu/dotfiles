@@ -38,7 +38,7 @@ font-4 = Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular;0
 font-5 = Font Awesome 5 Brands,Font Awesome 5 Brands Regular:style=Regular;0
 
 modules-left = powermenu xwindow
-modules-center = date
+modules-center = date 
 ;mpd
 modules-right = pulseaudio backlight networkspeedup networkspeeddown wireless-network
 ;wired-network
@@ -102,12 +102,17 @@ menu-0-0 = Browsers
 menu-0-0-exec = menu-open-1
 menu-0-1 = Multimedia
 menu-0-1-exec = menu-open-2
+menu-0-2 = KeeWeb
+menu-0-2-exec = keeweb
 
 menu-1-0 = Chromium
 menu-1-0-exec = chromium &
+menu-1-1 = Files
+menu-1-1-exec = thunar &
 
 menu-2-0 = Gimp
 menu-2-0-exec = gimp &
+
 label-open = Apps
 label-close = x
 label-separator = |
@@ -174,6 +179,7 @@ animation-charging-framerate = 750
 type = internal/i3
 pin-workspaces = true
 strip-wsnumbers=true
+
 ws-icon-0 = 1;♚
 ws-icon-1 = 2;♛
 ws-icon-2 = 3;♜
@@ -192,6 +198,10 @@ label-focused-foreground = #ffffff
 label-focused-background = #3f3f3f
 label-focused-underline = #fba922
 label-focused-padding = 4
+
+label-occupied = %name%
+label-occupied-padding = 1
+
 
 [module/filesystem]
 type = internal/fs
@@ -247,6 +257,46 @@ ramp-coreload-6-foreground = #ff5555
 ramp-coreload-7 = █
 ramp-coreload-7-font = 2
 ramp-coreload-7-foreground = #ff5555
+
+
+[module/cpu_bar]
+type = internal/cpu
+interval = 0.5
+format = <bar-load>
+format-prefix = "   "
+format-prefix-foreground = ${colors.fg}
+format-prefix-background = ${colors.bg}
+label-foreground = ${colors.fg}
+label-background = ${colors.bg}
+label = "%percentage%%"
+bar-load-width = 25
+bar-load-gradient = false
+
+bar-load-indicator ="█"
+bar-load-indicator-foreground = ${colors.primary}
+bar-load-indicator-background = ${colors.bg}
+bar-load-indicator-font = 1
+
+bar-load-fill ="█"
+
+bar-load-fill-background = ${colors.bg}
+
+bar-load-foreground-0 = ${colors.primary}
+bar-load-background-0 = ${colors.background}
+bar-load-foreground-1 = ${colors.primary}
+bar-load-background-1 = ${colors.background}
+bar-load-foreground-2 = ${colors.primary}
+bar-load-background-2 = ${colors.background}
+bar-load-foreground-3 = ${colors.primary}
+bar-load-background-3 = ${colors.background}
+bar-load-foreground-4 = ${colors.primary}
+bar-load-background-4 = ${colors.background}
+bar-load-fill-font = 1
+
+bar-load-empty ="█"
+bar-load-empty-foreground = ${colors.foreground-alt}
+bar-load-empty-background = ${colors.bg}
+bar-load-empty-font = 1
 
 [module/date]
 type = internal/date
@@ -380,12 +430,11 @@ format-connected-prefix-foreground = #fefefe
 format-connected-foreground = #fefefe
 format-connected-underline = #90ee90
 
-
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL %percentage%%
+format-volume = <ramp-volume> <label-volume> <bar-volume> 
+label-volume = %percentage%%
 label-volume-foreground = ${root.foreground}
 
 label-muted =  muted
@@ -402,7 +451,7 @@ bar-volume-foreground-3 = #55aa55
 bar-volume-foreground-4 = #55aa55
 bar-volume-foreground-5 = #f5a70a
 bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
+bar-volume-gradient = true
 bar-volume-indicator = |
 bar-volume-indicator-font = 2
 bar-volume-fill = ─
