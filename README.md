@@ -5,4 +5,4 @@ condainit.sh to be run to install all necessary packages for new conda environme
 
 xyinstall.sh contains some installation code for my reference.
 
-polybar and i3 is to be copied into ~/.config for my window manager with status bar set up.
+polybar and i3 and nvim is to be copied into ~/.config for my window manager with status bar set up.

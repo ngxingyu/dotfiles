@@ -4,7 +4,7 @@ endif
 
 let g:vim_bootstrap_langs = "c,go,html,javascript,python,typescript"
 let g:vim_bootstrap_editor = "nvim"
-
+let g:lsc_auto_map = v:true
 
 let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
 if !filereadable(vimplug_exists)
@@ -42,6 +42,7 @@ lua << END
     require'nvim_lsp'.texlab.setup{}
     require'nvim_lsp'.jsonls.setup{}
     require'nvim_lsp'.gopls.setup{}
+    require'nvim_lsp'.dartls.setup{}
 END
 
 let g:UltiSnipsExpandTrigger = '<tab>'
