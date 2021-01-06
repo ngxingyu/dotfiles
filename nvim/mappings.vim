@@ -43,6 +43,7 @@ nnoremap <leader>bn :echo bufnr('%')<Enter>
 nnoremap <leader>jn :echo b:terminal_job_id<Enter>
 
 map <C-q> :q!<cr>
+map <C-s> :w!<cr>
 map <C-w> :wq!<cr>
 nnoremap <leader>y "+y
 nnoremap <leader>p "+p
