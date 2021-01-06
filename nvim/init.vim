@@ -32,8 +32,17 @@ let g:ale_linters = {
 \}
 
 lua << END
-    require'lspconfig'.pyls_ms.setup{}
-    require'lspconfig'.bashls.setup{}
+    require'nvim_lsp'.tsserver.setup{}
+    require'nvim_lsp'.pyls_ms.setup{}
+    require'nvim_lsp'.leanls.setup{}
+    require'nvim_lsp'.kotlin_language_server.setup{
+    settings={kotlin={languageServer={path="/home/ngxingyu/kotlin-language-server/server/build/install/server/bin/"}}}}
+    require'nvim_lsp'.bashls.setup{}
+    require'nvim_lsp'.clangd.setup{}
+    require'nvim_lsp'.texlab.setup{}
+    require'nvim_lsp'.jsonls.setup{}
+    require'nvim_lsp'.gopls.setup{}
+    require'nvim_lsp'.dartls.setup{}
 END
 
 let g:UltiSnipsExpandTrigger = '<tab>'
@@ -55,11 +64,11 @@ let g:ncm2#matcher = 'substrfuzzy'
 
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
-let g:slime_target = "screen" " 'neovim'
+let g:slime_target = "neovim"
 let g:slime_paste_file = "$HOME/.slime_paste"
 let g:slime_cell_delimiter = "#%%"
 let g:slime_python_ipython = 1
-let g:python3_host_prog = '/home/nxingyu/miniconda3/envs/NLP/bin/python'
+let g:python3_host_prog = '~/miniconda3/envs/RL/bin/python3'
 
 let g:rg_command = 'rg --vimgrep -S'
 let g:tex_flavor='latex'

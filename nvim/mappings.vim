@@ -24,8 +24,6 @@ nnoremap <F9> za
 onoremap <F9> <C-C>za
 vnoremap <F9> zf
 
-nmap <leader>s <Plug>SlimeSendCell
-
 inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
 inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
 inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
@@ -43,7 +41,6 @@ nnoremap <leader>bn :echo bufnr('%')<Enter>
 nnoremap <leader>jn :echo b:terminal_job_id<Enter>
 
 map <C-q> :q!<cr>
-map <C-w> :wq!<cr>
 nnoremap <leader>y "+y
 nnoremap <leader>p "+p
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>

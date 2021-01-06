@@ -28,7 +28,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' } "Debugger
 
 Plug 'liuchengxu/vista.vim' "View LSP tags and symbols
-Plug 'neovim/nvim-lspconfig'
+Plug 'neovim/nvim-lsp'
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2-bufword'
