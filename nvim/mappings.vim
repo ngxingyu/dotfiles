@@ -6,6 +6,14 @@ nnoremap <silent> <C-j> :call WinMove('j')<cr>
 nnoremap <silent> <C-k> :call WinMove('k')<cr>
 nnoremap <silent> <C-l> :call WinMove('l')<cr>
 
+vnoremap <silent><Leader>y "yy <Bar> :call system('xclip', @y)<CR>
+
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
+
 function! WinMove(key)
   let t:curwin = winnr()
   exec "wincmd ".a:key
@@ -24,8 +32,9 @@ nnoremap <F9> za
 onoremap <F9> <C-C>za
 vnoremap <F9> zf
 
-nmap <leader>s <Plug>SlimeSendCell
+nmap <F6> :NERDTreeToggle<CR>
 
+nmap <leader>s <Plug>SlimeSendCell
 inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
 inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
 inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
@@ -42,9 +51,8 @@ nnoremap <silent> <leader>F :FZF ~
 nnoremap <leader>bn :echo bufnr('%')<Enter>
 nnoremap <leader>jn :echo b:terminal_job_id<Enter>
 
-map <C-q> :q!<cr>
 map <C-s> :w!<cr>
-map <C-w> :wq!<cr>
+map <C-q> :q!<cr>
 nnoremap <leader>y "+y
 nnoremap <leader>p "+p
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -58,6 +66,8 @@ nnoremap <C-b><C-j> :new +terminal<CR>
 tnoremap <C-b><C-j> <C-\><C-n>:new +terminal<CR>
 nnoremap <C-b><C-l> :vnew +terminal<CR>
 tnoremap <C-b><C-l> <C-\><C-n>:vnew +terminal<cr>
+nnoremap <C-]> :tabnew %<CR>g<C-]>
+vnoremap <C-]> <Esc>:tabnew %<CR>gvg<C-]>
 augroup neovim_terminal
     autocmd!
 
@@ -138,5 +148,5 @@ nnoremap <silent> ;i  <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> ;s  <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> ;td <cmd>lua vim.lsp.buf.type_definition()<CR>
 
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
+xmap ea <Plug>(EasyAlign)
+nmap ea <Plug>(EasyAlign)

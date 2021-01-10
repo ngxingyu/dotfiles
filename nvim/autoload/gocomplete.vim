@@ -1,0 +1,1 @@
+/home/ngxingyu/.config/nvim/plugged/gocode/nvim/autoload/gocomplete.vim

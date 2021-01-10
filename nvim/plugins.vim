@@ -12,7 +12,7 @@ Plug 'itchyny/lightline.vim' "lightline
 Plug 'mengelbrecht/lightline-bufferline' "bufferno
 Plug 'edkolev/tmuxline.vim'
 "Plug 'christoomey/vim-tmux-navigator' "Use Custom Keybinding.
-" Plug 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
 Plug 'mhinz/vim-startify'
 Plug 'TaDaa/vimade' "fade inactive buffers
 Plug 'mbbill/undotree' "undo history
@@ -29,21 +29,24 @@ Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' } "Debu
 
 Plug 'liuchengxu/vista.vim' "View LSP tags and symbols
 Plug 'neovim/nvim-lspconfig'
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-github'
-Plug 'ncm2/ncm2-ultisnips'
-Plug 'ncm2/float-preview.nvim'
-Plug 'ncm2/ncm2-match-highlight'
-Plug 'oncomouse/ncm2-biblatex'
-Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
-Plug 'ncm2/ncm2-jedi', {'for': 'python' }
-Plug 'ncm2/ncm2-pyclang', {'for': ['c', 'cpp']}
-Plug 'ncm2/ncm2-go'
-" Plug 'sebdah/vim-delve' "go debug
+Plug 'nvim-lua/completion-nvim'
+Plug 'akinsho/flutter-tools.nvim'
 
+" Plug 'ncm2/ncm2'
+" Plug 'roxma/nvim-yarp'
+" Plug 'ncm2/ncm2-bufword'
+" Plug 'ncm2/ncm2-path'
+" Plug 'ncm2/ncm2-github'
+" Plug 'ncm2/ncm2-ultisnips'
+" Plug 'ncm2/float-preview.nvim'
+" Plug 'ncm2/ncm2-match-highlight'
+" Plug 'oncomouse/ncm2-biblatex'
+" Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
+" Plug 'ncm2/ncm2-jedi', {'for': 'python' }
+" Plug 'ncm2/ncm2-pyclang', {'for': ['c', 'cpp']}
+" Plug 'ncm2/ncm2-go'
+" Plug 'sebdah/vim-delve' "go debug
+Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'Shougo/deoplete-lsp'
@@ -97,4 +100,8 @@ Plug 'leafOfTree/vim-svelte-plugin'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'natebosch/vim-lsc'
 Plug 'natebosch/vim-lsc-dart'
+
+Plug 'preservim/nerdtree'
+
+Plug 'vim-test/vim-test'
 call plug#end()

@@ -1,22 +1,34 @@
 if &compatible
-  set nocompatible               " Be iMproved
+    set nocompatible               " Be iMproved
 endif
 
 let g:vim_bootstrap_langs = "c,go,html,javascript,python,typescript"
 let g:vim_bootstrap_editor = "nvim"
 let g:lsc_auto_map = v:true
+set clipboard+=unnamedplus
+set redrawtime=5000
+function! ClipboardYank()
+      call system('xclip -i -selection clipboard', @@)
+  endfunction
+  function! ClipboardPaste()
+        let @@ = system('xclip -o -selection clipboard')
+    endfunction
+
+    vnoremap <silent> y y:call ClipboardYank()<cr>
+    vnoremap <silent> d d:call ClipboardYank()<cr>
+    nnoremap <silent> p :call ClipboardPaste()<cr>p
 
 let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
 if !filereadable(vimplug_exists)
-  if !executable("curl")
-    echoerr "You have to install curl or first install vim-plug yourself!"
-    execute "q!"
-  endif
-  echo "Installing Vim-Plug..."
-  echo ""
-  silent exec "!\curl -fLo " . vimplug_exists . " --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-  let g:not_finish_vimplug = "yes"
-  autocmd VimEnter * PlugInstall
+    if !executable("curl")
+        echoerr "You have to install curl or first install vim-plug yourself!"
+        execute "q!"
+    endif
+    echo "Installing Vim-Plug..."
+    echo ""
+    silent exec "!\curl -fLo " . vimplug_exists . " --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+    let g:not_finish_vimplug = "yes"
+    autocmd VimEnter * PlugInstall
 endif
 
 "-------------------Load files-----------------
@@ -25,41 +37,87 @@ source ~/.config/nvim/plugins.vim
 source ~/.config/nvim/mappings.vim
 
 let g:ale_linters = {
-    \ 'python': ['pylint'],
-    \ 'vim': ['vint'],
-    \ 'cpp': ['clang'],
-    \ 'c': ['clang']
-\}
+            \ 'python': ['pylint'],
+            \ 'vim': ['vint'],
+            \ 'cpp': ['clang'],
+            \ 'c': ['clang']
+            \}
 
-lua << END
-    require'lspconfig'.pyls_ms.setup{}
-    require'lspconfig'.bashls.setup{}
-END
+lua << EOF
+local lsp_config = require('lspconfig')
+local lsp_completion = require("completion")
+
+--Enable completion
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+local general_on_attach = function(client, bufnr)
+    if client.resolved_capabilities.completion then
+        lsp_completion.on_attach(client, bufnr)
+    end
+end
+
+-- Setup basic lsp servers
+for _, server in pairs({"html", "cssls", "tsserver", "pyright", "leanls", "tsserver", "vimls", "bashls", "clangd", "texlab", "jsonls", "gopls", "yamlls"}) do
+    lsp_config[server].setup {
+        -- Add capabilities
+        capabilities = capabilities,
+        on_attach = lsp_completion.on_attach -- general_on_attach
+    }
+end
+
+local flutter = require('flutter-tools')
+flutter.setup_lsp {
+    capabilities = capabilities,
+    on_attach = lsp_completion.on_attach -- general_on_attach
+}
+
+lsp_config.dartls.setup {
+    flags = {allow_incremental_sync = true},
+    init_options = {
+    closingLabels = true,
+    outline = true,
+    flutterOutline = true
+    },
+    capabilities = capabilities,
+    on_attach = lsp_completion.on_attach,
+    handlers = {
+        ['dart/textDocument/publishClosingLabels'] = flutter.closing_tags,
+        ['dart/textDocument/publishOutline'] = flutter.outline
+    }
+}
+
+EOF
+
+
 
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-augroup ncm2
-  au!
-  autocmd BufEnter * call ncm2#enable_for_buffer()
-  set completeopt=noinsert,menuone,noselect
-  au User Ncm2PopupOpen set completeopt=noinsert,menuone,noselect
-  au User Ncm2PopupClose set completeopt=menuone
-augroup END
+
+autocmd BufRead,BufNewFile,BufEnter *.dart UltiSnipsAddFiletypes dart-flutter
+
+" augroup ncm2
+"     au!
+"     autocmd BufEnter * call ncm2#enable_for_buffer()
+"     set completeopt=noinsert,menuone,noselect
+"     au User Ncm2PopupOpen set completeopt=noinsert,menuone,noselect
+"     au User Ncm2PopupClose set completeopt=menuone
+" augroup END
 
 let g:float_preview#docked=0
 
-" Optionally
-let ncm2#complete_length = [[1, 2]]
-let g:ncm2#matcher = 'substrfuzzy'
+" " Optionally
+" let ncm2#complete_length = [[1, 2]]
+" let g:ncm2#matcher = 'substrfuzzy'
 
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
-let g:slime_target = "screen" " 'neovim'
+let g:slime_target = "neovim"
 let g:slime_paste_file = "$HOME/.slime_paste"
 let g:slime_cell_delimiter = "#%%"
 let g:slime_python_ipython = 1
-let g:python3_host_prog = '/home/nxingyu/miniconda3/envs/NLP/bin/python'
+let g:python3_host_prog = '~/miniconda3/envs/RL/bin/python3'
 
 let g:rg_command = 'rg --vimgrep -S'
 let g:tex_flavor='latex'
@@ -83,6 +141,30 @@ let g:nnn#layout = 'new'
 let g:nnn#layout = { 'left': '~20%' } " or right, up, downu
 let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug' } }
 let g:nnn#action = {
-      \ '<c-t>': 'tab split',
-      \ '<c-j>': 'split',
-      \ '<c-l>': 'vsplit' }
+            \ '<c-t>': 'tab split',
+            \ '<c-j>': 'split',
+            \ '<c-l>': 'vsplit' }
+
+hi CursorLine guibg=#3d3d3d
+set cursorcolumn
+hi SignColumn guibg=#282828
+" augroup ReduceNoise
+"     autocmd!
+"     autocmd WinEnter * :call ResizeSplits()
+"     autocmd WinEnter * setlocal cursorline
+"     autocmd WinEnter * setlocal signcolumn=auto
+"     autocmd WinLeave * setlocal nocursorline
+"     autocmd WinLeave * setlocal signcolumn=no
+" augroup END
+"
+" function! ResizeSplits()
+"     if &ft == 'nerdtree'
+"         return
+"     elseif &ft == 'qf'
+"         resize 10
+"         return
+"     else
+"         set winwidth=100
+"         wincmd =
+"     endif
+" endfunction

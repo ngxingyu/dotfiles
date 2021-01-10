@@ -1,6 +1,3 @@
-" File              : base.vim
-" Date              : 28.08.2020
-" Last Modified Date: 28.08.2020
 scriptencoding utf-8
 syntax enable
 set nonu rnu
@@ -9,16 +6,20 @@ set cursorline
 set splitbelow splitright
 set mouse=nvirh
 set mousemodel=popup_setpos
-set clipboard=unnamedplus
+set clipboard=unnamed
 set confirm
 set autoread
 au CursorHold * checktime
 set hidden
 set title
-set winheight=10
-set winwidth=80
-set winminheight=1
-set winminwidth=5
+" set winheight=10
+" set winwidth=80
+" set winminheight=10
+" set winminwidth=8
+let NERDTreeWinSize=20
+let NERDTreeMapOpenInTab='<ENTER>'
+
+let g:indentLine_fileTypeExclude = ['tex']
 
 set nobackup writebackup
 set incsearch ignorecase smartcase hlsearch
