@@ -28,10 +28,11 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' } "Debugger
 
 Plug 'liuchengxu/vista.vim' "View LSP tags and symbols
+if has ("nvim")
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'akinsho/flutter-tools.nvim'
-
+endif
 " Plug 'ncm2/ncm2'
 " Plug 'roxma/nvim-yarp'
 " Plug 'ncm2/ncm2-bufword'
@@ -104,4 +105,9 @@ Plug 'natebosch/vim-lsc-dart'
 Plug 'preservim/nerdtree'
 
 Plug 'vim-test/vim-test'
+
+Plug 'plasticboy/vim-markdown'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
+
 call plug#end()

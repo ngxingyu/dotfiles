@@ -24,7 +24,9 @@ let g:indentLine_fileTypeExclude = ['tex']
 set nobackup writebackup
 set incsearch ignorecase smartcase hlsearch
 set ruler laststatus=2 showcmd showmode
+if has('nvim')
 set inccommand = "split"
+endif
 set termguicolors
 set list listchars=trail:»,tab:»-
 set fillchars+=vert:\     
@@ -34,12 +36,11 @@ set signcolumn=yes shortmess+=c
 
 set foldmethod=indent "syntax
 set foldlevelstart=99
-
-colorscheme molokai
+colorscheme spacegray
 highlight Pmenu guibg=white guifg=black gui=bold
 highlight Comment gui=bold
 highlight Normal gui=none
-highlight NonText guibg=none
+highlight NonText guibg=NONE
 highlight Normal guibg=NONE ctermbg=NONE
 highlight LineNr guibg=NONE ctermbg=NONE
 

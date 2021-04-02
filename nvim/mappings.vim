@@ -32,6 +32,9 @@ nnoremap <F9> za
 onoremap <F9> <C-C>za
 vnoremap <F9> zf
 
+"Markdown
+nnoremap <M-m> :MarkdownPreview<CR>
+
 nmap <F6> :NERDTreeToggle<CR>
 
 nmap <leader>s <Plug>SlimeSendCell
@@ -51,8 +54,8 @@ nnoremap <silent> <leader>F :FZF ~
 nnoremap <leader>bn :echo bufnr('%')<Enter>
 nnoremap <leader>jn :echo b:terminal_job_id<Enter>
 
-map <C-s> :w!<cr>
-map <C-q> :q!<cr>
+nnoremap <C-s> :w!<cr>
+nnoremap <C-q> :q!<cr>
 nnoremap <leader>y "+y
 nnoremap <leader>p "+p
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -68,15 +71,17 @@ nnoremap <C-b><C-l> :vnew +terminal<CR>
 tnoremap <C-b><C-l> <C-\><C-n>:vnew +terminal<cr>
 nnoremap <C-]> :tabnew %<CR>g<C-]>
 vnoremap <C-]> <Esc>:tabnew %<CR>gvg<C-]>
-augroup neovim_terminal
-    autocmd!
+if has('nvim')
+    augroup neovim_terminal
+        autocmd!
 
-    " Enter Terminal-mode (insert) automatically
-    autocmd TermOpen * startinsert
+        " Enter Terminal-mode (insert) automatically
+        autocmd TermOpen * startinsert
 
-    " Disables number lines on terminal buffers
-    autocmd TermOpen * :set nonumber norelativenumber
-augroup END
+        " Disables number lines on terminal buffers
+        autocmd TermOpen * :set nonumber norelativenumber
+    augroup END
+endif
 noremap <Leader>bf :ls<CR>
 nnoremap <leader>bq :bp <bar> bd! #<cr>
 nnoremap <Leader><Left> :bp<CR>

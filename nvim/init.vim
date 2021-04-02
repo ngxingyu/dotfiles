@@ -1,3 +1,4 @@
+
 if &compatible
     set nocompatible               " Be iMproved
 endif
@@ -18,18 +19,30 @@ function! ClipboardYank()
     vnoremap <silent> d d:call ClipboardYank()<cr>
     nnoremap <silent> p :call ClipboardPaste()<cr>p
 
-let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
-if !filereadable(vimplug_exists)
-    if !executable("curl")
-        echoerr "You have to install curl or first install vim-plug yourself!"
-        execute "q!"
-    endif
-    echo "Installing Vim-Plug..."
-    echo ""
-    silent exec "!\curl -fLo " . vimplug_exists . " --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-    let g:not_finish_vimplug = "yes"
-    autocmd VimEnter * PlugInstall
+
+"markdown
+
+let g:vim_markdown_folding_disabled = 1
+
+" do not use conceal feature, the implementation is not so good
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_math = 1
+
+" support front matter of various format
+let g:vim_markdown_frontmatter = 1  " for YAML format
+let g:vim_markdown_toml_frontmatter = 1  " for TOML format
+let g:vim_markdown_json_frontmatter = 1  " for JSON format"
+augroup pandoc_syntax
+    au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
+augroup END
+let g:mkdp_auto_close = 0
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+
+
 
 "-------------------Load files-----------------
 source ~/.config/nvim/base.vim
@@ -42,7 +55,7 @@ let g:ale_linters = {
             \ 'cpp': ['clang'],
             \ 'c': ['clang']
             \}
-
+if has('nvim')
 lua << EOF
 local lsp_config = require('lspconfig')
 local lsp_completion = require("completion")
@@ -89,7 +102,7 @@ lsp_config.dartls.setup {
 
 EOF
 
-
+endif
 
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
