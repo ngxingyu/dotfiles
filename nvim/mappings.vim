@@ -37,7 +37,7 @@ nnoremap <M-m> :MarkdownPreview<CR>
 
 nmap <F6> :NERDTreeToggle<CR>
 
-nmap <leader>s <Plug>SlimeSendCell
+nmap <leader>ss <Plug>SlimeSendCell
 inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
 inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
 inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
@@ -54,8 +54,8 @@ nnoremap <silent> <leader>F :FZF ~
 nnoremap <leader>bn :echo bufnr('%')<Enter>
 nnoremap <leader>jn :echo b:terminal_job_id<Enter>
 
-nnoremap <C-s> :w!<cr>
-nnoremap <C-q> :q!<cr>
+nnoremap <Leader>s :w!<cr>
+nnoremap <Leader>q :q!<cr>
 nnoremap <leader>y "+y
 nnoremap <leader>p "+p
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
