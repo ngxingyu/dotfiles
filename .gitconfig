@@ -1,29 +1,29 @@
 [user]
---email = ng_xing_yu@htx.gov.sg
---name = Ng Xing Yu
+  email = ng_xing_yu@htx.gov.sg
+  name = Ng Xing Yu
 [alias]
-st = status
-ci = commit -v
-co = checkout
-di = diff
-br = branch
-ad = add
+  st = status
+  ci = commit -v
+  co = checkout
+  di = diff
+  br = branch
+  ad = add
 [http]
-sslverify = false
+  sslverify = false
 [filter "lfs"]
-clean = git-lfs clean -- %f
-smudge = git-lfs smudge -- %f
-process = git-lfs filter-process
-required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 [diff]
-tool = meld
+  tool = meld
 [core]
-editor = nvim
+  editor = nvim
 [init]
-defaultBranch = main
+  defaultBranch = main
 [help]
-autocorrect = 1
+  autocorrect = 1
 [pull]
-rebase = false
+  rebase = false
 [color]
-ui = true
+  ui = true
