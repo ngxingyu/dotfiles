@@ -36,7 +36,6 @@ set signcolumn=yes shortmess+=c
 
 set foldmethod=indent "syntax
 set foldlevelstart=99
-colorscheme spacegray
 highlight Pmenu guibg=white guifg=black gui=bold
 highlight Comment gui=bold
 highlight Normal gui=none

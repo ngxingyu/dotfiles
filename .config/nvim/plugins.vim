@@ -31,7 +31,7 @@ Plug 'liuchengxu/vista.vim' "View LSP tags and symbols
 if has ("nvim")
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
-Plug 'akinsho/flutter-tools.nvim'
+"Plug 'akinsho/flutter-tools.nvim'
 endif
 " Plug 'ncm2/ncm2'
 " Plug 'roxma/nvim-yarp'
@@ -85,7 +85,7 @@ Plug 'airblade/vim-gitgutter'
 
 
 Plug 'jpalardy/vim-slime'
-Plug 'cjrh/vim-conda', {'for':'python'}
+" Plug 'cjrh/vim-conda', {'for':'python'}
 
 Plug 'skywind3000/asyncrun.vim'
 Plug 'ilyachur/cmake4vim'
@@ -108,6 +108,5 @@ Plug 'vim-test/vim-test'
 
 Plug 'plasticboy/vim-markdown'
 Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 
 call plug#end()
