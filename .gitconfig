@@ -1,6 +1,6 @@
 [user]
-  email = ng_xing_yu@htx.gov.sg
-  name = Ng Xing Yu
+	email = ng.xingyu@u.nus.edu
+	name = Ng Xingyu
 [alias]
   st = status
   ci = commit -v
