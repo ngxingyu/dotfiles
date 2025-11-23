@@ -1,7 +1,14 @@
 # TMUX
 alias ta='tmux attach'
 alias tls='tmux ls'
+alias tat='tmux attach -t'
+alias tad='tmux attach -d -t'
 alias tns='tmux new-session -s'
+alias tks='tmux kill-session'
+alias tkser='tmux kill-server'
+alias td='tmux detach-client'
+alias tsls='lsof -U | grep tmp/tmux'
+alias tj='tmux-jump'
 
 # Git
 alias gs='git status'

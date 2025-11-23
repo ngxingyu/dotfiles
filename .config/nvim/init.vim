@@ -3,7 +3,7 @@ if &compatible
     set nocompatible               " Be iMproved
 endif
 
-let g:vim_bootstrap_langs = "c,go,html,javascript,python,typescript"
+let g:vim_bootstrap_langs = ""
 let g:vim_bootstrap_editor = "nvim"
 let g:lsc_auto_map = v:true
 set clipboard+=unnamedplus
@@ -54,38 +54,6 @@ let g:ale_linters = {
             \ 'cpp': ['clang'],
             \ 'c': ['clang']
             \}
-if has('nvim')
-lua << EOF
-local lsp_completion = require("completion")
-
---Enable completion
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-local general_on_attach = function(client, bufnr)
-    if client.resolved_capabilities.completion then
-        lsp_completion.on_attach(client, bufnr)
-    end
-end
-
--- Setup basic lsp servers
-for _, server in pairs({"pyright", "vimls", "bashls", "clangd", "jsonls", "yamlls"}) do
-    vim.lsp.config(server, {
-        -- Add capabilities
-        capabilities = capabilities,
-        on_attach = lsp_completion.on_attach -- general_on_attach
-    })
-    vim.lsp.enable(server)
-end
-
-EOF
-
-endif
-
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-
 
 let g:float_preview#docked=0
 
@@ -93,7 +61,7 @@ let g:float_preview#docked=0
 " let ncm2#complete_length = [[1, 2]]
 " let g:ncm2#matcher = 'substrfuzzy'
 
-let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:slime_target = "tmux"
 
 let g:rg_command = 'rg --vimgrep -S'
 
