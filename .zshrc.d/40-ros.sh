@@ -27,8 +27,8 @@ fi
 export ROS_DOMAIN_ID=5
 export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 
-if command -v register-python-argcomplete3 >/dev/null 2>&1; then
-    eval "$(register-python-argcomplete3 ros2)"
-    eval "$(register-python-argcomplete3 colcon)"
+if command -v register-python-argcomplete >/dev/null 2>&1; then
+    eval "$(register-python-argcomplete ros2)"
+    eval "$(register-python-argcomplete colcon)"
 fi
 export ISAAC_ROS_WS="${ISAAC_ROS_WS:-${HOME}/workspaces/isaac_ros-dev/}"

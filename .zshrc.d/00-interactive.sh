@@ -23,4 +23,4 @@ zstyle ':vcs_info:git:*' formats '(%b)'
 zstyle ':vcs_info:git:*' actionformats '(%b|%a)'
 
 # Set prompt to show current directory and git branch
-PROMPT='%~ ${vcs_info_msg_0_} %# '
+PROMPT='%n@%m %~ ${vcs_info_msg_0_} %# '
