@@ -15,7 +15,7 @@ alias gs='git status'
 alias gco='git checkout'
 alias gp='git push'
 alias ga='git add'
-alias gci='git commit'
+alias gci='git commit --author="${GIT_AUTHOR_NAME} <${GIT_AUTHOR_EMAIL}>"'
 
 # ROS per-use
 #alias humble='source $HOME/.config/ros/ros2_env humble'

@@ -15,9 +15,7 @@ alias l='ls -CF'
 # Alert for long-running commands
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Source user's .bash_aliases.d scripts (optional)
-if [ -d "$HOME/.dotfiles/.bash_aliases.d" ]; then
-    for f in "$HOME/.dotfiles/.bash_aliases.d/"*.sh; do
-        [ -r "$f" ] && . "$f"
-    done
+# Source user's .bash_aliases scripts (optional)
+if [ -f "$HOME/.dotfiles/.bash_aliases" ]; then
+    . "$HOME/.dotfiles/.bash_aliases"
 fi
