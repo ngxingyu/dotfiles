@@ -35,12 +35,10 @@ let g:vim_markdown_json_frontmatter = 1  " for JSON format"
 augroup pandoc_syntax
     au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
 augroup END
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+let plug_dir = expand('~/.config/nvim/plugged')
+if empty(glob(plug_dir . '/*'))
+  autocmd VimEnter * ++once PlugInstall --sync | source $MYVIMRC
 endif
-
 
 
 "-------------------Load files-----------------
