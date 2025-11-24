@@ -16,7 +16,7 @@ alias gco='git checkout'
 alias gp='git push'
 alias ga='git add'
 alias gci='git commit'
-
+alias gsw='git config --local user.name "$(GIT_AUTHOR_NAME)" && git config --local user.email "$(GIT_AUTHOR_EMAIL)"'
 # ROS per-use
 #alias humble='source $HOME/.config/ros/ros2_env humble'
 #alias ross='source $HOME/.config/ros/ros_env'
