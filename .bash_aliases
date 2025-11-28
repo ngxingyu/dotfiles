@@ -28,4 +28,4 @@ alias doc='cd $HOME/Documents'
 alias dow='cd $HOME/Downloads'
 
 # Editor
-#alias vim='nvim'
+alias vim='nvim'

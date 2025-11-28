@@ -5,6 +5,7 @@
 _comp_options+=(globdots)
 
 # History
+HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 setopt append_history share_history
@@ -71,3 +72,7 @@ PROMPT+="%{$fg[green]%}@%m%{$reset_color%}:%B%{$fg[blue]%}%~%{$reset_color%}"
 
 PROMPT+="\$vcs_info_msg_0_%# "
 RPROMPT=%T
+
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
