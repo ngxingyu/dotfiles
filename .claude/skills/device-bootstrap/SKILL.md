@@ -44,12 +44,16 @@ both places.
 
 ```bash
 curl -fsSL https://tailscale.com/install.sh | sh   # macOS: brew install --cask tailscale
-sudo tailscale up --ssh
+sudo tailscale up
 ```
 
-`--ssh` enables Tailscale SSH so `Host 100.64.*.* → ProxyCommand tailscale ssh %h`
-in `~/.ssh/config` works both directions immediately once that config lands
-in step 4.
+No `--ssh` — deliberately not using Tailscale SSH. Access goes through
+plain `sshd` and the keys `~/.ansible`'s `user_profile` role already
+manages via `authorized_keys`, same as every named `Host` in
+`~/.ssh/config` already does. This keeps SSH working identically whether
+or not Tailscale itself is up, at the cost of manual key rotation via
+Ansible instead of instant tailnet-ACL revocation — a reasonable tradeoff
+for a small personal fleet.
 
 ## 2. Register this device's Tailscale IP
 

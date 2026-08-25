@@ -73,7 +73,10 @@ if ! command -v tailscale >/dev/null; then
   if [ "$OS" = Linux ]; then curl -fsSL https://tailscale.com/install.sh | sh
   else PKG_INSTALL --cask tailscale; fi
 fi
-sudo tailscale up --ssh || tailscale up --ssh || echo "-> run 'tailscale up --ssh' manually (may need interactive auth)"
+sudo tailscale up || tailscale up || echo "-> run 'tailscale up' manually (may need interactive auth)"
+# Not using --ssh / Tailscale SSH: plain sshd + the keys ~/.ansible's
+# user_profile role already manages via authorized_keys is enough at this
+# scale, and keeps SSH working the same way whether or not Tailscale is up.
 
 echo "== Device type =="
 if [ -z "$DEVICE_TYPE" ]; then
