@@ -1,0 +1,56 @@
+# theme = nord-wave
+font-family = FiraCode Nerd Font Mono
+font-size = 10
+cursor-style = block
+mouse-hide-while-typing = true
+
+background-opacity = 0.9
+background-blur-radius = 15
+
+window-padding-color = background
+window-padding-balance = true
+macos-titlebar-style = transparent
+
+# command = /usr/bin/zsh
+shell-integration = zsh
+shell-integration-features = no-cursor,sudo,no-title
+
+# keybindings
+keybind = ctrl+shift+w>r=reload_config
+keybind = ctrl+shift+w>x=close_surface
+
+keybind = ctrl+shift+w>n=new_window
+
+# tabs 
+keybind = ctrl+shift+w>c=new_tab
+keybind = ctrl+shift+w>shift+l=next_tab
+keybind = ctrl+shift+w>shift+h=previous_tab
+keybind = ctrl+shift+w>comma=move_tab:-1
+keybind = ctrl+shift+w>period=move_tab:1
+
+# quick tab switch
+keybind = ctrl+shift+w>1=goto_tab:1
+keybind = ctrl+shift+w>2=goto_tab:2
+keybind = ctrl+shift+w>3=goto_tab:3
+keybind = ctrl+shift+w>4=goto_tab:4
+keybind = ctrl+shift+w>5=goto_tab:5
+keybind = ctrl+shift+w>6=goto_tab:6
+keybind = ctrl+shift+w>7=goto_tab:7
+keybind = ctrl+shift+w>8=goto_tab:8
+keybind = ctrl+shift+w>9=goto_tab:9
+
+# split
+keybind = ctrl+shift+w>shift+\=new_split:right
+keybind = ctrl+shift+w>-=new_split:down
+
+keybind = ctrl+shift+w>j=goto_split:bottom
+keybind = ctrl+shift+w>k=goto_split:top
+keybind = ctrl+shift+w>h=goto_split:left
+keybind = ctrl+shift+w>l=goto_split:right
+
+keybind = ctrl+shift+w>z=toggle_split_zoom
+
+keybind = ctrl+shift+w>e=equalize_splits
+
+# other
+copy-on-select = clipboard

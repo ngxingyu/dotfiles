@@ -1,0 +1,13 @@
+{
+  "model": "sonnet",
+  "theme": "dark",
+  "tui": "fullscreen",
+  "effortLevel": "medium",
+  "skipWorkflowUsageWarning": true,
+  "agentPushNotifEnabled": true,
+  "skipAutoPermissionPrompt": true,
+  "enabledPlugins": {
+    "clangd-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true
+  }
+}

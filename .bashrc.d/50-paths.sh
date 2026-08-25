@@ -8,10 +8,16 @@ export GZ_VERSION=harmonic
 #export WEIGHTS_PATH="/home/xingyu/weights"
 export CUDA_HOME="/usr/local/cuda-12.8/"
 
-: "${DATA_VOLUME:=/mnt/bags}"
+#: "${DATA_VOLUME:=/mnt/bags}"
+export DATA_VOLUME=/mnt/nvme1_free
 export RATTLER_CACHE_DIR=$DATA_VOLUME/.cache/rattler/cache
 export UV_CACHE_DIR=$DATA_VOLUME/.cache/uv/cache
 export HF_HOME="$DATA_VOLUME/.cache/huggingface"
 export TORCH_HOME="$DATA_VOLUME/.cache/torch"
+#export RATTLER_CACHE_DIR=$DATA_VOLUME/P1a/embodied-navigation/rattler/cache
+#export UV_CACHE_DIR=$DATA_VOLUME/P1a/embodied-navigation/uv/cache
+#export HF_HOME="$DATA_VOLUME/P1a/huggingface"
+#export TORCH_HOME="$DATA_VOLUME/P1a/torch"
+
 export PATH="${HOME}/.pixi/bin:$PATH"
 export EDITOR=nvim

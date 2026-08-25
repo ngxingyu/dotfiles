@@ -23,11 +23,15 @@ if [ -f "$ROS_SETUP" ]; then
     alias sr="source $ROS_SETUP"
 fi
 
-export ROS_DOMAIN_ID=5
-export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
-#export CYCLONEDDS_URI="file:///home/xingyu/working_setup/vln_ws/src/vln_object_detection/cyclonedds.xml"
+# Per-project ROS_DOMAIN_ID / RMW_IMPLEMENTATION / etc. now live in each
+# repo's pixi .env, not here.
+
+# Different devices ship different argcomplete entry-point names
+# depending on package version -- try both rather than hardcoding one.
 if command -v register-python-argcomplete3 >/dev/null 2>&1; then
     eval "$(register-python-argcomplete3 ros2)"
     eval "$(register-python-argcomplete3 colcon)"
+elif command -v register-python-argcomplete >/dev/null 2>&1; then
+    eval "$(register-python-argcomplete ros2)"
+    eval "$(register-python-argcomplete colcon)"
 fi
-export ISAAC_ROS_WS="${ISAAC_ROS_WS:-${HOME}/workspaces/isaac_ros-dev/}"

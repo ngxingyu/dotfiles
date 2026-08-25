@@ -1,3 +1,6 @@
+[include]
+	path = ~/.gitconfig.local
+
 [user]
 	email = ng.xingyu@u.nus.edu
 	name = Ng Xing Yu

@@ -1,0 +1,35 @@
+# .claude/CLAUDE.md.template
+#
+# Not tracked as ~/.claude/CLAUDE.md itself, and not symlinked — Claude Code
+# writes runtime state into settings/session files that live alongside it,
+# and this file is meant to diverge per device anyway. On a new machine:
+#
+#   cp ~/.dotfiles/.claude/CLAUDE.md.template ~/.claude/CLAUDE.md
+#
+# then fill in / delete the sections below. The @import line is the only
+# part every device keeps identically — it pulls in the shared personal
+# preferences (commit workflow, pixi usage) from the dotfiles repo, so
+# editing CLAUDE.shared.md once updates every device without touching
+# this file again.
+
+@~/.dotfiles/.claude/CLAUDE.shared.md
+
+# Machine: <hostname>
+
+<!--
+  Delete whichever of these don't apply to this device. A laptop typically
+  keeps none of them; a shared/server box typically needs Port registry at
+  minimum so services don't collide.
+-->
+
+## Storage layout
+
+<!-- Only if this device has non-default mount points worth remembering. -->
+
+## Port registry
+
+<!-- Only on boxes that run local services — laptops usually don't need this. -->
+
+## GPU layout
+
+<!-- Only on boxes with a GPU whose allocation across processes matters. -->
