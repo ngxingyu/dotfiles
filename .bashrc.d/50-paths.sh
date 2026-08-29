@@ -14,3 +14,10 @@ if [ -d /usr/lib/ccache ]; then
   export CXX="/usr/lib/ccache/g++"
 fi
 export CCACHE_DIR="$HOME/.cache/ccache/"
+
+# pixi/rattler + uv caches: ~/.cache is a safe default anywhere. A machine
+# with a bigger/faster disk to use instead overrides these in
+# device-env.local.sh (95-device-env.sh loads after this file, so an
+# override there always wins).
+export RATTLER_CACHE_DIR="$HOME/.cache/rattler/cache"
+export UV_CACHE_DIR="$HOME/.cache/uv/cache"
