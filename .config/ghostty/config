@@ -43,10 +43,12 @@ keybind = ctrl+shift+w>9=goto_tab:9
 keybind = ctrl+shift+w>shift+\=new_split:right
 keybind = ctrl+shift+w>-=new_split:down
 
-keybind = ctrl+shift+w>j=goto_split:bottom
-keybind = ctrl+shift+w>k=goto_split:top
-keybind = ctrl+shift+w>h=goto_split:left
-keybind = ctrl+shift+w>l=goto_split:right
+# pane switching: direct cmd+hjkl, no leader (macOS-native feel).
+# Note: cmd+h overrides the system "Hide Ghostty" shortcut.
+keybind = cmd+j=goto_split:bottom
+keybind = cmd+k=goto_split:top
+keybind = cmd+h=goto_split:left
+keybind = cmd+l=goto_split:right
 
 keybind = ctrl+shift+w>z=toggle_split_zoom
 

@@ -11,3 +11,8 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 if ! env | grep -qs PATH | grep -qs ".local/bin"; then
   export PATH=$HOME/.local/bin:$PATH
 fi
+
+# macOS: put Homebrew on PATH. No-op on Linux devices (dir won't exist).
+if [ -d /opt/homebrew/bin ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
