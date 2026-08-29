@@ -6,7 +6,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 " Core editing
 Plug 'psliwka/vim-smoothie' " Smooth scroll
 Plug 'chaoren/vim-wordmotion'
-Plug 'jiangmiao/auto-pairs'
+Plug 'windwp/nvim-autopairs' " jiangmiao/auto-pairs is unmaintained and broken on modern Neovim (maparg() dict changes)
 Plug 'tpope/vim-surround' " Change surrounding char
 Plug 'tpope/vim-repeat'
 Plug 'wellle/targets.vim'
@@ -63,7 +63,21 @@ call plug#end()
 
 if has('nvim')
 lua << EOF
+-- vimade's Lua rewrite requires an explicit setup() call now; the old
+-- g:vimade / g:vimade.fadelevel vimscript globals are no longer read and
+-- left the plugin's internal recipe state uninitialized, which crashed
+-- with "Key not present in Dictionary: __recipe" on every focus/tick event.
+require('vimade').setup({
+  fadelevel = 0.7,
+  recipe = { 'default' },
+})
+
+require('nvim-autopairs').setup({})
+
 local cmp = require'cmp'
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
+
 cmp.setup({
   snippet = {
     expand = function(args)

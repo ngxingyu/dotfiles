@@ -43,8 +43,6 @@ highlight NonText guibg=NONE
 highlight Normal guibg=NONE ctermbg=NONE
 highlight LineNr guibg=NONE ctermbg=NONE
 
-let g:vimade = {}
-let g:vimade.fadelevel = 0.7
 
 function! UseTabs()
   set tabstop=4     " Size of a hard tabstop (ts).
