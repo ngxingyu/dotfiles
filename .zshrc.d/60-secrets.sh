@@ -1,2 +1,1 @@
-ENV_FILE="$HOME/.dotfiles/.bashrc.d/.env"
-[ -f "$ENV_FILE" ] && export $(grep -v '^#' "$ENV_FILE" | xargs)
+../.bashrc.d/60-secrets.sh

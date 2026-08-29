@@ -1,0 +1,1 @@
+../.bashrc.d/95-device-env.sh

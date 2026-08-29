@@ -2,4 +2,5 @@
 .config/nvim/plugged/*
 .env
 .zshrc.d/90-local.sh
+/device-env.local.sh
 .config/zsh/.zcompdump*

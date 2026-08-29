@@ -1,1 +1,2 @@
-[ -f "$HOME/.dotfiles/.bashrc.d/.env" ] && export $(grep -v '^#' "$HOME/.dotfiles/.bashrc.d/.env" | xargs)
+ENV_FILE="$HOME/.dotfiles/.bashrc.d/.env"
+[ -f "$ENV_FILE" ] && export $(grep -v '^#' "$ENV_FILE" | xargs)

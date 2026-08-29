@@ -1,23 +1,16 @@
-export PATH=$PATH:~/.local/bin:/opt/TurboVNC/bin
-export PATH=/usr/local/cuda-12.8/bin:/usr/src/tensorrt/bin/:$PATH
-export LD_LIBRARY_PATH=/usr/local/cuda-12.8/lib64:$LD_LIBRARY_PATH
-export CMAKE_PREFIX_PATH=/opt/openrobots:$CMAKE_PREFIX_PATH
-export GZ_SIM_PHYSICS_ENGINE_PATH=/usr/lib/x86_64-linux-gnu/gz-sim-8/plugins
-export GZ_VERSION=harmonic
+# Add paths
+export PATH="$PATH:$HOME/.local/bin:/opt/TurboVNC/bin:${HOME}/.pixi/bin"
 
-#export WEIGHTS_PATH="/home/xingyu/weights"
-export CUDA_HOME="/usr/local/cuda-12.8/"
-
-#: "${DATA_VOLUME:=/mnt/bags}"
-export DATA_VOLUME=/mnt/nvme1_free
-export RATTLER_CACHE_DIR=$DATA_VOLUME/.cache/rattler/cache
-export UV_CACHE_DIR=$DATA_VOLUME/.cache/uv/cache
-export HF_HOME="$DATA_VOLUME/.cache/huggingface"
-export TORCH_HOME="$DATA_VOLUME/.cache/torch"
-#export RATTLER_CACHE_DIR=$DATA_VOLUME/P1a/embodied-navigation/rattler/cache
-#export UV_CACHE_DIR=$DATA_VOLUME/P1a/embodied-navigation/uv/cache
-#export HF_HOME="$DATA_VOLUME/P1a/huggingface"
-#export TORCH_HOME="$DATA_VOLUME/P1a/torch"
-
-export PATH="${HOME}/.pixi/bin:$PATH"
-export EDITOR=nvim
+# CUDA / ccache-as-gcc-wrapper: not every box has this layout (macOS never
+# does, plenty of Linux boxes don't either) -- guard by actual presence, not
+# by OS, so this doesn't silently point $CC/$CXX at a nonexistent binary and
+# break builds.
+if [ -d /usr/local/cuda/bin ]; then
+  export PATH="/usr/local/cuda/bin${PATH:+:${PATH}}"
+  export LD_LIBRARY_PATH="/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
+fi
+if [ -d /usr/lib/ccache ]; then
+  export CC="/usr/lib/ccache/gcc"
+  export CXX="/usr/lib/ccache/g++"
+fi
+export CCACHE_DIR="$HOME/.cache/ccache/"
